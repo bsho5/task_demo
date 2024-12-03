@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "135153224460",
+    "project_id": "task-demo-note-app-12",
+    "storage_bucket": "task-demo-note-app-12.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:135153224460:android:0e3230aa0f8473eeacd729",
+        "android_client_info": {
+          "package_name": "com.example.task_demo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9krk_5v-j4ZR1702j9ywXSG0_1TMmD5Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
