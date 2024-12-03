@@ -17,8 +17,15 @@ class Home extends StatelessWidget {
    
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
-      floatingActionButtonLocation: ExpandableFab.location,
-      floatingActionButton: const _ExpandableFab(),
+      //floatingActionButtonLocation: ExpandableFab.location,
+      floatingActionButton:   FloatingActionButton(
+          onPressed: () {
+            Get.find<NoteController>().textEditingController.clear();
+            Get.to(() => const Note(action: "Save", id: ''));
+          },
+          child: const Icon(Icons.note_outlined, color: Colors.white, size: 40),
+        ),
+      //const _ExpandableFab(),
       body: SafeArea(
         child: GetBuilder<NoteController>(
             init: NoteController(),
