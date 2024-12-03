@@ -35,10 +35,8 @@ class Note extends StatelessWidget {
                   child: Stack(
                     children: [
                       // TextField(controller: controller.textEditingController,m),
-                      Expanded(
-                        child: TextField(
-                            maxLines: null, controller: controller.textEditingController, keyboardType: TextInputType.multiline, decoration: null,autofocus: true,),
-                      ),
+                      TextField(
+                          maxLines: null, controller: controller.textEditingController, keyboardType: TextInputType.multiline, decoration: null,autofocus: true,),
                     ],
                   ),
                 ),
