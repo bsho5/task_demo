@@ -17,15 +17,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.4"
-  animated_search_bar:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: HEAD
-      resolved-ref: b97839712570f7db615ffefe1e6e047918aea584
-      url: "https://github.com/tusharhow/animated-search-bar.git"
-    source: git
-    version: "1.0.0+1"
   async:
     dependency: transitive
     description:
@@ -176,7 +167,7 @@ packages:
     source: hosted
     version: "2.3.0"
   flutter_keyboard_visibility:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_keyboard_visibility
       sha256: "98664be7be0e3ffca00de50f7f6a287ab62c763fc8c762e0a21584584a3ff4f8"
@@ -329,6 +320,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  quick_actions:
+    dependency: "direct main"
+    description:
+      name: quick_actions
+      sha256: "2c1d9a91f3218b4e987a7e1e95ba0415b7f48a2cb3ffacc027a1e3d3c117223f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
+  quick_actions_android:
+    dependency: transitive
+    description:
+      name: quick_actions_android
+      sha256: "926e50d6f879287b34d21934e6c9457f0d851f554179f2a9e8136c4acd1b7062"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.18"
+  quick_actions_ios:
+    dependency: transitive
+    description:
+      name: quick_actions_ios
+      sha256: "402596dea62a1028960b93f7651ec22be0e2a91e4fbf92a1c62d3b95f8ff95a5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.1"
+  quick_actions_platform_interface:
+    dependency: transitive
+    description:
+      name: quick_actions_platform_interface
+      sha256: "1fec7068db5122cd019e9340d3d7be5d36eab099695ef3402c7059ee058329a4"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -407,5 +430,5 @@ packages:
     source: hosted
     version: "1.1.0"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
-  flutter: ">=3.22.0"
+  dart: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
