@@ -6,17 +6,29 @@ import 'package:task_demo/screens/note/model.dart';
 class NoteController extends GetxController {
   final _firestore = FirebaseFirestore.instance;
   final TextEditingController textEditingController = TextEditingController();
+    final TextEditingController textEditingController2 = TextEditingController();
+
   bool _isLoading = false;
   bool get isLoading => _isLoading;
   List<NoteModel> notes = [];
+  List<NoteModel> searchableNotes = [];
   List<String> searchableList = [];
 
   @override
-  void onReady() {
-    // TODO: implement onReady
-    getDataOnce();
-    super.onReady();
+
+void onClose() {
+    // TODO: implement onClose
+      getDataOnce();
+    super.onClose();
   }
+@override
+  void onInit() {
+    // TODO: implement onInit
+     getDataOnce();
+    super.onInit();
+  }
+
+  
 
   void addDataToCollection() {
     _firestore
@@ -32,12 +44,18 @@ class NoteController extends GetxController {
     textEditingController.clear();
   }
 
+  void deleteDataToCollection(String id) {
+    _firestore.collection('note').doc(id).delete();
+    Get.back();
+    textEditingController.clear();
+  }
+
   void editDataToCollection(String id) {
     _firestore.collection('note').doc(id).update({
       'body': textEditingController.text,
       'created_at': FieldValue.serverTimestamp(), // Optional: Adds a server timestamp
     });
- getDataOnce();
+    getDataOnce();
     Get.back();
     textEditingController.clear();
   }
@@ -48,11 +66,11 @@ class NoteController extends GetxController {
     _isLoading = true;
     update();
     try {
-      final querySnapshot = await _firestore.collection('note').get();
+      final querySnapshot = await _firestore.collection('note').orderBy("created_at", descending: true).get();
       for (var i = 0; i < querySnapshot.docs.length; i++) {
         notes.add(NoteModel.fromMap((querySnapshot.docs[i].data())));
         notes[i].id = querySnapshot.docs[i].id;
-        searchableList.add(title(notes[i].body??""));
+        searchableList.add(title(notes[i].body ?? ""));
       }
     } catch (e) {}
     _isLoading = false;
@@ -71,12 +89,14 @@ class NoteController extends GetxController {
     return header;
   }
 
-    List<String> search(String value) {
+  List<String> search(String value) {
     List<String> searchList = [];
+    searchableNotes = [];
     for (int i = 0; i < searchableList.length; i++) {
       String name = searchableList[i];
       if (name.toLowerCase().contains(value.toLowerCase())) {
         searchList.add(name);
+        searchableNotes.add(notes[i]);
       }
     }
     return searchList;

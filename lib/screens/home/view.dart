@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_expandable_fab/flutter_expandable_fab.dart';
 import 'package:get/get.dart';
 
 import 'package:task_demo/screens/note/controller.dart';
@@ -21,7 +20,7 @@ class Home extends StatelessWidget {
       floatingActionButton:   FloatingActionButton(
           onPressed: () {
             Get.find<NoteController>().textEditingController.clear();
-            Get.to(() => const Note(action: "Save", id: ''));
+            Get.to(() => const Note(action: "Save", title: "New note",id: ''));
           },
           child: const Icon(Icons.note_outlined, color: Colors.white, size: 40),
         ),
@@ -44,44 +43,44 @@ class Home extends StatelessWidget {
   }
 }
 
-class _ExpandableFab extends StatelessWidget {
-  const _ExpandableFab({
-    super.key,
-  });
+// class _ExpandableFab extends StatelessWidget {
+//   const _ExpandableFab({
+//     super.key,
+//   });
 
-  @override
-  Widget build(BuildContext context) {
-    return ExpandableFab(
-      openButtonBuilder: RotateFloatingActionButtonBuilder(
-        child: const Icon(Icons.add),
-        fabSize: ExpandableFabSize.regular,
-        foregroundColor: Colors.white,
-        // backgroundColor: Colors.green,
-        shape: const CircleBorder(),
-      ),
-      closeButtonBuilder: DefaultFloatingActionButtonBuilder(
-        child: const Icon(Icons.close),
-        fabSize: ExpandableFabSize.small,
-        foregroundColor: Colors.white,
-        // backgroundColor: Colors.lightGreen,
-        shape: const CircleBorder(),
-      ),
-      children: [
-        FloatingActionButton(
-          onPressed: () {
-            Get.find<NoteController>().textEditingController.clear();
-            Get.to(() => const Note(action: "Save", id: ''));
-          },
-          child: const Icon(Icons.note_outlined, color: Colors.white, size: 40),
-        ),
-        FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(Icons.list, color: Colors.white, size: 40),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return ExpandableFab(
+//       openButtonBuilder: RotateFloatingActionButtonBuilder(
+//         child: const Icon(Icons.add),
+//         fabSize: ExpandableFabSize.regular,
+//         foregroundColor: Colors.white,
+//         // backgroundColor: Colors.green,
+//         shape: const CircleBorder(),
+//       ),
+//       closeButtonBuilder: DefaultFloatingActionButtonBuilder(
+//         child: const Icon(Icons.close),
+//         fabSize: ExpandableFabSize.small,
+//         foregroundColor: Colors.white,
+//         // backgroundColor: Colors.lightGreen,
+//         shape: const CircleBorder(),
+//       ),
+//       children: [
+//         FloatingActionButton(
+//           onPressed: () {
+//             Get.find<NoteController>().textEditingController.clear();
+//             Get.to(() => const Note(action: "Save", id: ''));
+//           },
+//           child: const Icon(Icons.note_outlined, color: Colors.white, size: 40),
+//         ),
+//         FloatingActionButton(
+//           onPressed: () {},
+//           child: const Icon(Icons.list, color: Colors.white, size: 40),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 class _Body extends StatelessWidget {
   const _Body({
@@ -115,7 +114,7 @@ class _Body extends StatelessWidget {
                 child: InkWell(
                   onTap: () {
                     controller.textEditingController.text = controller.notes[index].body ?? '';
-                    Get.to(() => Note(action: "Edit", id: controller.notes[index].id ?? ''));
+                    Get.to(() => Note(action: "Edit",title:  controller.title(controller.notes[index].body ?? "") , id: controller.notes[index].id ?? ''));
                   },
                   child: Container(
                     padding: const EdgeInsets.all(12.0),
